@@ -6,6 +6,7 @@ import requests
 import time
 import pandas as pd
 from bs4 import BeautifulSoup
+import re
 
 ns = {'ns': 'http://data.stortinget.no'}
 
@@ -64,21 +65,49 @@ for i, sakid in enumerate(sak_ids[:nr_of_cases]):
                     content_area = content_areas[0]
                     sammendrag_tekst = content_area.get_text(separator='\n', strip=True).replace('\n',' ').replace('\r',' ').replace('  ',' ')
                     print(f"  - Found summary for case number {sakid}")
+                    vedtak_text= ''
                     try:
                         heading = soup.find('p', string='vedtak:')
-                        vedtak_text= ''
                         for sibling in heading.find_next_siblings('p'):
                             vedtak_text+= sibling.text.replace('\n',' ').replace('\r',' ').replace('  ',' ')+' '
                         print(vedtak_text)
+                        
+                        if vedtak_text.strip():
+                            print("  - Found vedtak text on main page")
+                        else:
+                            print("  - Vedtak text not found on main page, checking subpages...")
+
+                            for i in range(2, 12): 
+                                subpage_url = full_url.split('/?lvl=')[0].rstrip('/') + f'/{i}/'
+                                print(f"    - Trying subpage: {subpage_url}")
+
+                                try:
+                                    sub_response = requests.get(subpage_url)
+                                    sub_soup = BeautifulSoup(sub_response.text, 'html.parser')
+                                    heading = sub_soup.find('p', string='vedtak:')
+
+                                    if heading:
+                                        print("Found 'vedtak:' heading on subpage")
+                                        for sibling in heading.find_next_siblings(['p', 'ul']):
+                                            vedtak_text+= sibling.text.replace('\n',' ').replace('\r',' ').replace('  ',' ')+' '
+                                        print(vedtak_text)
+                                        break
+                                except Exception as e:
+                                    print(f"    - Failed to fetch or parse {subpage_url}: {e}")
+
+                            if not vedtak_text.strip():
+                                print("  - Vedtak text not found on any subpage")
+
+
                     except:
-                        print('Didnot find accurate block')
+                        print('Did not find accurate block')
                 else:
                     print(f"  - No summary found for case number {sakid}")
 
             except requests.exceptions.RequestException as e:
                 print(f"  - Could not retrieve summary from {full_url}. Error: {e}")
 
-            time.sleep(1)
+            time.sleep(2)
             break  # Take only the first relevant publication
 
     saks_data.append({
@@ -89,7 +118,7 @@ for i, sakid in enumerate(sak_ids[:nr_of_cases]):
         'tilrading': vedtak_text
     })
 
-    time.sleep(0.5)
+    time.sleep(1.5)
 
 
 # Step 3: Put data in DataFrame
