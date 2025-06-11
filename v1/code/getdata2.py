@@ -1,3 +1,6 @@
+### Pulling 'Tilråding' in addition to the whole sammendrag. Saving in 'data2.csv'
+
+
 import xml.etree.ElementTree as ET
 import requests
 import time
@@ -48,8 +51,7 @@ for i, sakid in enumerate(sak_ids[:nr_of_cases]):
 
         if lenke_url is not None and 'inns' in lenke_url.text:
             full_url = f"https:{lenke_url.text}/?lvl=0"
-            print(full_url)
-            nfkjasndk
+            #print(full_url)
 
             try:
                 instilling_response = requests.get(full_url)
@@ -60,8 +62,16 @@ for i, sakid in enumerate(sak_ids[:nr_of_cases]):
 
                 if len(content_areas) > 0:
                     content_area = content_areas[0]
-                    sammendrag_tekst = content_area.get_text(separator='#', strip=True)
+                    sammendrag_tekst = content_area.get_text(separator='\n', strip=True).replace('\n',' ').replace('\r',' ').replace('  ',' ')
                     print(f"  - Found summary for case number {sakid}")
+                    try:
+                        heading = soup.find('p', string='vedtak:')
+                        vedtak_text= ''
+                        for sibling in heading.find_next_siblings('p'):
+                            vedtak_text+= sibling.text.replace('\n',' ').replace('\r',' ').replace('  ',' ')+' '
+                        print(vedtak_text)
+                    except:
+                        print('Didnot find accurate block')
                 else:
                     print(f"  - No summary found for case number {sakid}")
 
@@ -75,10 +85,12 @@ for i, sakid in enumerate(sak_ids[:nr_of_cases]):
         'sakid': sakid,
         'tittel': tittel,
         'emneord': emne_liste,
-        'sammendrag': sammendrag_tekst
+        'sammendrag': sammendrag_tekst,
+        'tilrading': vedtak_text
     })
 
     time.sleep(0.5)
+
 
 # Step 3: Put data in DataFrame
 df_combined = pd.DataFrame(saks_data)
