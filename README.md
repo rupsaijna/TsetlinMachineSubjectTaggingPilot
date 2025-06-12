@@ -18,7 +18,8 @@
 'labels':labels as number,
 'idx_:_word': unique words with indices,
 'word_:_idx':reverse word map, 
-'labels_:_labelnum':dict mapping of labels to numbers}```
+'labels_:_labelnum':dict mapping of labels to numbers}
+```
 
 - v1/code/vanillaTM.py
 
@@ -35,14 +36,14 @@ Failing with following error:
 self.clause_bank[:, :, 0:self.number_of_state_bits_ta - 1] = np.uint32(~0)
 OverflowError: Python integer -1 out of bounds for uint32
 
-Possibly due to all labels not being represented in training data.```
+Possibly due to all labels not being represented in training data.
+```
 
 - v1/code/coalescedTM.py
 
 ```
 Y needs to be np.array.
-Labels are currently in a ragged-edge list. Cannot convert.
-
+Labels are currently in a ragged-edge list. Cannot convert that to np.array.
 ```
 
 
