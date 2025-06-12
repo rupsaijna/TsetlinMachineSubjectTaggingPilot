@@ -111,6 +111,7 @@ for i, sakid in enumerate(sak_ids[:nr_of_cases]):
             break  # Take only the first relevant publication
 
     saks_data.append({
+        'url':full_url,
         'sakid': sakid,
         'tittel': tittel,
         'emneord': emne_liste,
