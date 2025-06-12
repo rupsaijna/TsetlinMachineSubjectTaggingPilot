@@ -11,6 +11,9 @@ import string
 import time
 import numpy as np
 
+import pickle
+import gzip
+
 import ast
 
 def create_labels(df):
@@ -27,7 +30,8 @@ df = pd.read_csv('data2.csv')
 
 print(df.shape)
 
-df = df.dropna(subset=['tilrading'])
+df = df.dropna(subset=['tilrading', 'emneord'])
+df = df[df['emneord'].map(len) > 2]
 
 print(df.shape)
 
@@ -43,14 +47,11 @@ def encode_sentences(txt, word_set):
 	tnum=0
 	for t in txt:
 		s_words=['<START>']+t[1:]+['<STOP>']
-		print(s_words)
 		for w in s_words:
-			#print(w, word_idx[w])
 			idx=word_idx[w]
 			feature_set[tnum][idx]=1
 		feature_set[tnum][-1]=t[0]  ##Set the last index to the sent 
 		tnum+=1
-	print('\nfs:',feature_set)
 	return feature_set
 
 maxlen=0
@@ -68,10 +69,8 @@ for ind,line in df.iterrows():
     templabels =line['emneord']
     templabellist = []
     for tl in templabels:
-        print(tl, emnedict[tl])
         templabellist.append(emnedict[tl])
     labels.append(templabellist)
-
 
 word_set=set(all_words)
 
@@ -79,5 +78,17 @@ i=0
 word_idx = dict((c, i + 1) for i, c in enumerate(word_set,start = -1))
 reverse_word_map = dict(map(reversed, word_idx.items()))
 
-print('\nMap:', reverse_word_map)
 data=encode_sentences(sents, word_set)
+
+
+list_len = [len(i) for i in labels]
+print(max(list_len))
+nflknl
+
+features_dict = {'featurized':data, 'labels':labels, 'idx_:_word':word_idx, 'word_:_idx':reverse_word_map, 'labels_:_labelnum':emnedict}
+
+
+
+with gzip.open('simple_bag_of_words_features.pkl.gz', 'wb') as file:
+    pickle.dump(features_dict, file, protocol=pickle.HIGHEST_PROTOCOL)
+
