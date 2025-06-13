@@ -3,8 +3,8 @@
 import pickle
 import gzip
 import sys
-from tmu.models.classification.vanilla_classifier import TMClassifier
-from tmu.tools import BenchmarkTimer
+#from tmu.models.classification.vanilla_classifier import TMClassifier
+#from tmu.tools import BenchmarkTimer
 from sklearn.model_selection  import train_test_split
 import argparse
 import logging
@@ -15,11 +15,20 @@ filename = 'simple_bag_of_words_features.pkl.gz'
 with gzip.open(filename, 'rb') as file:
     loaded_features = pickle.load(file)
 
+def count_labels(y_list):
+	label_counts={}
+	for y in y_list:
+		if y in label_counts.keys():
+			label_counts[y]+= 1
+		else:
+			label_counts[y]= 1
+	return label_counts
 
 print(loaded_features.keys())
 
 data = loaded_features['featurized'].astype("uint32") 
 lb= loaded_features['labels']
+labeldict = loaded_features['labels_:_labelnum']
 
 new_data=[]
 new_label=[]
@@ -29,7 +38,37 @@ for label_list in lb:
         new_data.append(data[data_index])
         new_label.append(indiv_label)
     data_index+= 1
-        
+
+new_label = np.asarray(new_label)	
+label_counts = count_labels(new_label)
+   
+print(len(new_data))
+print(len(new_label))
+
+for key,val in label_counts.items():
+	if val == 1:
+		lblname = ''
+		for labelname,labelnumber in labeldict.items():
+			if labelnumber == key:
+				lblname = labelname
+		print(key, np.nonzero(new_label==key), lblname)
+		to_delete = np.nonzero(new_label==key)[0][0]
+		del new_data[to_delete]
+		new_label = np.delete(new_label,to_delete)
+
+
+print(len(new_data))
+print(len(new_label))
+
+label_counts = count_labels(new_label)
+for key,val in label_counts.items():
+	if val == 1:
+		lblname = ''
+		for labelname,labelnumber in labeldict.items():
+			if labelnumber == key:
+				lblname = labelname
+		print(key, np.nonzero(new_label==key), lblname)
+
 
 
 new_data= np.asarray(new_data)
@@ -56,6 +95,16 @@ x_train_ids=x_train[:,-1]
 x_test_ids=x_test[:,-1]
 x_train=x_train[:,:-1]
 x_test=x_test[:,:-1]
+
+label_counts2 = count_labels(y_train)        
+for key,val in label_counts2.items():
+	if val == 1:
+		print(key)
+
+label_counts2 = count_labels(y_test)        
+for key,val in label_counts2.items():
+	if val == 1:
+		print(key)
 
 results_accuracy=[]
 
