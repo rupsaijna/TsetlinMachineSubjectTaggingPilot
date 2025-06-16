@@ -4,15 +4,27 @@ import pickle
 import gzip
 import sys
 sys.path.append('../../PyCoalescedTsetlinMachineCUDA/')
-
 from PyCoalescedTsetlinMachineCUDA.tm import MultiOutputTsetlinMachine
-
+from sklearn.metrics import classification_report
 from sklearn.model_selection  import train_test_split
+from sklearn.metrics import multilabel_confusion_matrix
 import argparse
 import logging
 import numpy as np
 
 filename = 'simple_bag_of_words_features.pkl.gz'
+outputfile = 'coalesced_simplebow.txt'
+masteroutputfile = 'master_results.csv'
+
+num_clauses = 10000
+T = 950
+s = 1
+epochs = 10
+
+
+fo = open(outputfile, 'w')
+fo.write('\n Using : PyCoalescedTsetlinMachineCUDA \nEncoding: Simple BOW \n')
+fo.write('\n TM parameters : Clauses:'+str(num_clauses)+' T:'+str(T)+' s:'+str(s)+' \n')
 
 with gzip.open(filename, 'rb') as file:
     loaded_features = pickle.load(file)
@@ -30,11 +42,14 @@ def make_label_vectors(labels_list, labels_dict):
 data = loaded_features['featurized'].astype("uint32") 
 lb= loaded_features['labels']
 labeldict = loaded_features['labels_:_labelnum']
-
+sorted_label_names = []
+sorted_label_names = sorted(labeldict, key=labeldict.get)
 y_all = make_label_vectors(lb, labeldict)
 
 print(data.shape)
 print(y_all.shape)
+
+fo.write('\n Data Shape : '+str(data.shape)+' \nNumber of Labels: '+str(len(labeldict))+' \n')
 
 average_accuracy = 0.0
 
@@ -52,13 +67,30 @@ print(y_train.shape)
 print(x_test.shape)
 print(y_test.shape)
 
-for i in range(100):
-	tm = MultiOutputTsetlinMachine(10, 15, 3.9, boost_true_positive_feedback=0)
+tm = MultiOutputTsetlinMachine(num_clauses, T, s, boost_true_positive_feedback=0)
 
-	tm.fit(x_train, y_train, epochs=200)
+for i in range(epochs):
+    print('Epoch ', i, ' training ...' )
+	tm.fit(x_train, y_train, epochs=20)
 
-	print("Accuracy:", 100*(tm.predict(x_test) == y_test).mean())
+	prediction = tm.predict(x_test)
 
-	average_accuracy += 100*(tm.predict(x_test) == y_test).mean()
+	print("Accuracy:", 100*(prediction == y_test).mean())
+
+	average_accuracy += 100*(prediction == y_test).mean()
 
 	print("Average Accuracy:", average_accuracy/(i+1))
+
+	print('\n Confusion Matrix ',multilabel_confusion_matrix(y_test, y_pred, labels=sorted_label_names ))
+
+	print('\n Classification Report:\n',classification_report(y_test, y_pred, target_names = sorted_label_names ))
+
+	if i%10 == 0:
+		fo.write('\n Epoch '+str(i)+': Acc:'+str(100*(prediction == y_test).mean()) +' ' )
+
+fo.close()   
+
+
+fo = open(masteroutputfile, 'a+')
+#running_file_name, input_file_name, preprocess, Number_samples_total, Number_labels, TMType, Clauses, T, s, epochs, Avg_accuracy
+fo.write(os.path.basename(__file__)+','+filename+','+str(len(data))+','+str(len(labeldict))+',Simple BOW, Coalesced,'+str(num_clauses)+','+str(T)+','+str(s)+','+str(epochs)+','+str(average_accuracy/100))

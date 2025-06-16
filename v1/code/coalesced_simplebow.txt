@@ -1,0 +1,8 @@
+
+ Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: Simple BOW 
+
+ TM parameters : Clauses:1000 T:950 s:1 
+
+ Data Shape : (578, 7555) 
+Number of Labels: 159 
