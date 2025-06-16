@@ -3,7 +3,7 @@
 import pickle
 import gzip
 import sys
-sys.path.append('../../PyCoalescedTsetlinMachineCUDA/')
+sys.path.append('../../../PyCoalescedTsetlinMachineCUDA/')
 from PyCoalescedTsetlinMachineCUDA.tm import MultiOutputTsetlinMachine
 from sklearn.metrics import classification_report
 from sklearn.model_selection  import train_test_split
@@ -11,15 +11,17 @@ from sklearn.metrics import multilabel_confusion_matrix
 import argparse
 import logging
 import numpy as np
+import os
 
-filename = 'simple_bag_of_words_features.pkl.gz'
-outputfile = 'coalesced_simplebow.txt'
-masteroutputfile = 'master_results.csv'
+filename = '../../processed_data/simple_bag_of_words_features.pkl.gz'
+outputfile = '../../results/coalesced_simplebow.txt'
+masteroutputfile = '../../results/master_results.csv'
 
 num_clauses = 5000
 T = 3950
 s = 1
 epochs = 10
+train_epochs= 200
 
 
 fo = open(outputfile, 'w')
@@ -71,7 +73,7 @@ tm = MultiOutputTsetlinMachine(num_clauses, T, s, boost_true_positive_feedback=0
 
 for i in range(epochs):
 	print('Epoch ', i, ' training ...' )
-	tm.fit(x_train, y_train, epochs=200)
+	tm.fit(x_train, y_train, epochs=train_epochs)
 
 	prediction = tm.predict(x_test)
 
@@ -92,6 +94,6 @@ fo.close()
 
 
 fo = open(masteroutputfile, 'a+')
-#running_file_name, input_file_name, preprocess, Number_samples_total, Number_labels, TMType, Clauses, T, s, epochs, Avg_accuracy
-fo.write(os.path.basename(__file__)+','+filename+','+str(len(data))+','+str(len(labeldict))+',Simple BOW, Coalesced,'+str(num_clauses)+','+str(T)+','+str(s)+','+str(epochs)+','+str(average_accuracy/100))
+#running_file_name, input_file_name, result_filename, Number_samples_total, Number_labels, preprocess, TMType, Clauses, T, s, train_epochs, run_epochs,Avg_accuracy
+fo.write(os.path.basename(__file__)+','+filename+','+outputfile+','+str(len(data))+','+str(len(labeldict))+',Simple BOW, Coalesced,'+str(num_clauses)+','+str(T)+','+str(s)+','+str(train_epochs)+','+str(epochs)+','+str(average_accuracy/100))+',NA\n'
 fo.close()

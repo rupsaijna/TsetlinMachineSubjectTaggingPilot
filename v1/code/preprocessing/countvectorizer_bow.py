@@ -1,6 +1,6 @@
 #Feature extraction
 
-#CountVectorizer
+#CountVectorizer, max n_grams = 2
 
 
 import pandas as pd
@@ -18,7 +18,7 @@ import gzip
 
 import ast
 
-max_ngram = 3
+max_ngram = 2
 num_features = 10000
 
 

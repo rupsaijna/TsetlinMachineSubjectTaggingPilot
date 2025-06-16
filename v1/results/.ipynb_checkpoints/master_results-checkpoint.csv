@@ -1,0 +1,2 @@
+running_file_name, input_file_name, result_filename, Number_samples_total, Number_labels, preprocess, TMType, Clauses, T, s, train_epochs, run_epochs,Avg_accuracy, notes
+coalescedTM_simplebow.py,simple_bag_of_words_features.pkl.gz, coalesced_simplebow.txt,578,159,Coalesced, Simple BOW, 5000, 3950, 1, 200, 10, 69.45, NA

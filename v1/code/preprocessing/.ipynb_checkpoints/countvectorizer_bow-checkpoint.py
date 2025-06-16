@@ -1,6 +1,6 @@
 #Feature extraction
 
-#CountVectorizer
+#CountVectorizer, max n_grams = 2
 
 
 import pandas as pd
@@ -18,7 +18,7 @@ import gzip
 
 import ast
 
-max_ngram = 3
+max_ngram = 2
 num_features = 10000
 
 
@@ -122,7 +122,7 @@ X_test = vectorizer_X.transform(sents_test)
 data = np.append(X_train,X_test)
 
 
-features_dict = {'featurized':data, 'labels':labels, 'idx_:_word':word_idx, 'word_:_idx':reverse_word_map, 'labels_:_labelnum':emnedict, 'train_test_split':len(train)}
+features_dict = {'featurized':data, 'labels':labels, 'idx_:_word':word_idx, 'word_:_idx':reverse_word_map, 'featurenames_vectorizer': feature_names, 'labels_:_labelnum':emnedict, 'train_test_split':len(train)}
 
 
 

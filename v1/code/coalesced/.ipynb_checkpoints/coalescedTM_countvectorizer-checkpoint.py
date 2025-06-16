@@ -3,7 +3,7 @@
 import pickle
 import gzip
 import sys
-sys.path.append('../../PyCoalescedTsetlinMachineCUDA/')
+sys.path.append('../../../PyCoalescedTsetlinMachineCUDA/')
 from PyCoalescedTsetlinMachineCUDA.tm import MultiOutputTsetlinMachine
 from sklearn.metrics import classification_report
 from sklearn.model_selection  import train_test_split
@@ -11,6 +11,7 @@ from sklearn.metrics import multilabel_confusion_matrix
 import argparse
 import logging
 import numpy as np
+import os
 
 filename = '../../processed_data/countvectorizer_bag_of_words_features.pkl.gz'
 outputfile = '../../results/coalesced_countvecbow.txt'
@@ -20,7 +21,7 @@ num_clauses = 5000
 T = 3950
 s = 1
 epochs = 10
-
+train_epochs = 200
 
 fo = open(outputfile, 'w')
 fo.write('\n Using : PyCoalescedTsetlinMachineCUDA \nEncoding: CountVectorized BOW \n')
@@ -39,7 +40,8 @@ def make_label_vectors(labels_list, labels_dict):
 
 
 
-data = loaded_features['featurized'].astype("uint32") 
+data = loaded_features['featurized']
+split_id = loaded_features['train_test_split']
 lb= loaded_features['labels']
 labeldict = loaded_features['labels_:_labelnum']
 sorted_label_names = []
@@ -48,18 +50,14 @@ y_all = make_label_vectors(lb, labeldict)
 
 print(data.shape)
 print(y_all.shape)
-
-fo.write('\n Data Shape : '+str(data.shape)+' \nNumber of Labels: '+str(len(labeldict))+' \n')
-
-average_accuracy = 0.0
-
-
-x_train, x_test, y_train, y_test = train_test_split(data, y_all)
-x_train_ids=x_train[:,-1]
-x_test_ids=x_test[:,-1]
-x_train=x_train[:,:-1]
-x_test=x_test[:,:-1]
-
+if split_id == -1:
+    fo.write('\n Data Shape : '+str(data.shape)+' \nNumber of Labels: '+str(len(labeldict))+' \n')
+    x_train, x_test, y_train, y_test = train_test_split(data, y_all)
+else:
+    x_train = data[0].toarray().astype(np.uint32)
+    x_test = data[1].toarray().astype(np.uint32)
+    y_train = y_all[:split_id, :]
+    y_test = y_all[split_id:, :]
 
 print(x_train.shape)
 print(y_train.shape)
@@ -67,11 +65,17 @@ print(y_train.shape)
 print(x_test.shape)
 print(y_test.shape)
 
-tm = MultiOutputTsetlinMachine(num_clauses, T, s, boost_true_positive_feedback=0)
+
+
+average_accuracy = 0.0
+
+
+tm = MultiOutputTsetlinMachine(num_clauses, T, s, q=80, boost_true_positive_feedback=0)
 
 for i in range(epochs):
 	print('Epoch ', i, ' training ...' )
-	tm.fit(x_train, y_train, epochs=200)
+	print(x_train.shape)
+	tm.fit(x_train, y_train, epochs=train_epochs)
 
 	prediction = tm.predict(x_test)
 
@@ -92,6 +96,7 @@ fo.close()
 
 
 fo = open(masteroutputfile, 'a+')
-#running_file_name, input_file_name, preprocess, Number_samples_total, Number_labels, TMType, Clauses, T, s, epochs, Avg_accuracy
-fo.write(os.path.basename(__file__)+','+filename+','+str(len(data))+','+str(len(labeldict))+',CountVectorized BOW, Coalesced,'+str(num_clauses)+','+str(T)+','+str(s)+','+str(epochs)+','+str(average_accuracy/100))
+
+#running_file_name, input_file_name, result_filename, Number_samples_total, Number_labels, preprocess, TMType, Clauses, T, s, train_epochs, run_epochs,Avg_accuracy,Notes
+fo.write(os.path.basename(__file__)+','+filename+','+outputfile+','+str(len(data))+','+str(len(labeldict))+',CountVectorized BOW, Coalesced,'+str(num_clauses)+','+str(T)+','+str(s)+','+str(train_epochs)+','+str(epochs)+','+str(average_accuracy/100))+',NA\n'
 fo.close()
