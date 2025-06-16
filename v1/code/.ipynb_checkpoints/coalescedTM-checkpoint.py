@@ -16,8 +16,8 @@ filename = 'simple_bag_of_words_features.pkl.gz'
 outputfile = 'coalesced_simplebow.txt'
 masteroutputfile = 'master_results.csv'
 
-num_clauses = 10000
-T = 950
+num_clauses = 5000
+T = 3950
 s = 1
 epochs = 10
 
@@ -70,8 +70,8 @@ print(y_test.shape)
 tm = MultiOutputTsetlinMachine(num_clauses, T, s, boost_true_positive_feedback=0)
 
 for i in range(epochs):
-    print('Epoch ', i, ' training ...' )
-	tm.fit(x_train, y_train, epochs=20)
+	print('Epoch ', i, ' training ...' )
+	tm.fit(x_train, y_train, epochs=200)
 
 	prediction = tm.predict(x_test)
 
@@ -81,9 +81,9 @@ for i in range(epochs):
 
 	print("Average Accuracy:", average_accuracy/(i+1))
 
-	print('\n Confusion Matrix ',multilabel_confusion_matrix(y_test, y_pred, labels=sorted_label_names ))
+	#print('\n Confusion Matrix ',multilabel_confusion_matrix(y_test, prediction, labels=sorted_label_names ))
 
-	print('\n Classification Report:\n',classification_report(y_test, y_pred, target_names = sorted_label_names ))
+	print('\n Classification Report:\n',classification_report(y_test, prediction, target_names = sorted_label_names ))
 
 	if i%10 == 0:
 		fo.write('\n Epoch '+str(i)+': Acc:'+str(100*(prediction == y_test).mean()) +' ' )
@@ -94,3 +94,4 @@ fo.close()
 fo = open(masteroutputfile, 'a+')
 #running_file_name, input_file_name, preprocess, Number_samples_total, Number_labels, TMType, Clauses, T, s, epochs, Avg_accuracy
 fo.write(os.path.basename(__file__)+','+filename+','+str(len(data))+','+str(len(labeldict))+',Simple BOW, Coalesced,'+str(num_clauses)+','+str(T)+','+str(s)+','+str(epochs)+','+str(average_accuracy/100))
+fo.close()
