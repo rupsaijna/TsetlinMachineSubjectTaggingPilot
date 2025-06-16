@@ -8,17 +8,36 @@
 
 - Try only with “Komiteens tilråding”-part of the document.
 
+- Baseline :
+    - ALL the Data
+    - scikit-learn count vectorizer, Max n_grams = 2, binarized
+    - s = 1
+
 ### Files:
 
-- v1/code/simple_bag_of_words.py
+- v1/code/preprocessing/simple_bag_of_words.py
 
-```Creates present/absent features w.r.t. bag of words. Saves following in simple_bag_of_words_features.pkl.gz
+```Creates present/absent features w.r.t. bag of words. Saves following in processed_data/simple_bag_of_words_features.pkl.gz
 
 {'featurized':converted data, 
 'labels':labels as number,
 'idx_:_word': unique words with indices,
 'word_:_idx':reverse word map, 
-'labels_:_labelnum':dict mapping of labels to numbers}
+'labels_:_labelnum':dict mapping of labels to numbers
+'train_test_split':not split into train-test}
+```
+
+- v1/code/preprocessing/countvectorizer_bag_of_words.py
+
+```Creates features w.r.t. CountVectorizer. Saves following in processed_data/countvectorizer_bag_of_words_features.pkl.gz
+
+{'featurized':converted data, 
+'labels':labels as number,
+'idx_:_word': unique words with indices,
+'word_:_idx':reverse word map,
+'featurenames_vectorizer': feature names after calling CountVectorizer fit_transform,
+'labels_:_labelnum':dict mapping of labels to numbers
+'train_test_split':index of split for train-test}
 ```
 
 - v1/code/vanillaTM.py
@@ -42,8 +61,10 @@ Possibly due to all labels not being represented in training data.
 - v1/code/coalescedTM.py
 
 ```
-Y needs to be np.array.
-Labels are currently in a ragged-edge list. Cannot convert that to np.array.
-```
+Further hyperparamter tuning required.
 
+Current Accuracy at 69.5.
+
+```
+Classification report for class-wise PRF in v1/results/classificationreport_simplebow_coalesced.txt
 
