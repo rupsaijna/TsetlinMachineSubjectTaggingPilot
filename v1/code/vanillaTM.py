@@ -3,8 +3,8 @@
 import pickle
 import gzip
 import sys
-#from tmu.models.classification.vanilla_classifier import TMClassifier
-#from tmu.tools import BenchmarkTimer
+from tmu.models.classification.vanilla_classifier import TMClassifier
+from tmu.tools import BenchmarkTimer
 from sklearn.model_selection  import train_test_split
 import argparse
 import logging
@@ -39,6 +39,7 @@ for label_list in lb:
         new_label.append(indiv_label)
     data_index+= 1
 
+## deleteing classes with single sample ##
 new_label = np.asarray(new_label)	
 label_counts = count_labels(new_label)
    
@@ -56,7 +57,7 @@ for key,val in label_counts.items():
 		del new_data[to_delete]
 		new_label = np.delete(new_label,to_delete)
 
-
+#verifying the deletes .....
 print(len(new_data))
 print(len(new_label))
 
@@ -69,7 +70,7 @@ for key,val in label_counts.items():
 				lblname = labelname
 		print(key, np.nonzero(new_label==key), lblname)
 
-
+## deleteing classes with single sample ##
 
 new_data= np.asarray(new_data)
 new_label= np.asarray(new_label).astype("uint32")
@@ -99,18 +100,15 @@ x_test=x_test[:,:-1]
 label_counts2 = count_labels(y_train)        
 for key,val in label_counts2.items():
 	if val == 1:
-		print(key)
+		print('in y_train',key)
 
 label_counts2 = count_labels(y_test)        
 for key,val in label_counts2.items():
 	if val == 1:
-		print(key)
+		print('in y_test',key)
 
 results_accuracy=[]
 
-print(len(list(set(y_train))))
-
-print(loaded_features['labels_:_labelnum'])
 
 for r in range(epochs):
 	print('Run:',r)
