@@ -1,0 +1,17 @@
+
+Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: CountVectorized BOW
+TM parameters : Clauses:12000 T:10000 s:1.0 
+
+Ngrams:3 Features:10000 Source:sammendrag 
+
+Epoch 0: Acc:97.11464195078892 
+Epoch 10: Acc:96.65673618007283 
+Epoch 20: Acc:97.03188789584023 
+Epoch 30: Acc:96.97120158887785 
+Epoch 40: Acc:96.6346684320865 
+Epoch 50: Acc:96.77810879399757 
+Epoch 60: Acc:96.71190555003862 
+Epoch 70: Acc:96.64018536908308 
+Epoch 80: Acc:96.91051528191548 
+Epoch 90: Acc:96.91603221891206 

@@ -1,0 +1,9 @@
+Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: CountVectorized BOW 
+
+ TM parameters : Clauses:5000 T:3950 s:1 
+
+ Epoch 0: Acc:79.53806115810019 
+Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: CountVectorized BOW
+TM parameters : Clauses:8000 T:10000 s:1.0 

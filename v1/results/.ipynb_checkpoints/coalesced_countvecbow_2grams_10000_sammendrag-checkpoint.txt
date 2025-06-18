@@ -1,0 +1,24 @@
+
+Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: CountVectorized BOW
+TM parameters : Clauses:8000 T:10000 s:1.0 
+
+Ngrams:2 Features:10000 Source:sammendrag 
+
+Epoch 0: Acc:78.55566589429549 
+Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: CountVectorized BOW
+TM parameters : Clauses:12000 T:3000 s:1.0 
+
+Ngrams:2 Features:10000 Source:sammendrag 
+
+Epoch 0: Acc:61.68487255875538 
+Epoch 10: Acc:66.72183603663247 
+Epoch 20: Acc:65.77843981021736 
+Epoch 30: Acc:66.37426900584795 
+Epoch 40: Acc:65.45294052741917 
+Epoch 50: Acc:64.41575637206223 
+Epoch 60: Acc:66.67770054065983 
+Epoch 70: Acc:64.5591967339733 
+Epoch 80: Acc:64.6916032218912 
+Epoch 90: Acc:65.92739710912502 
