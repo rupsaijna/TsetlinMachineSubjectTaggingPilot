@@ -45,11 +45,11 @@ def encode_sentences(txt, word_set):
 
 
 
-df = pd.read_csv('../../data/data2.csv')
+df = pd.read_csv('../data/data3.csv')
 
 print(df.shape)
 
-df = df.dropna(subset=['sammendrag', 'emneord'])
+df = df.dropna(subset=['text', 'emneord'])
 df = df[df['emneord'].map(len) > 2]
 
 print(df.shape)
@@ -64,7 +64,7 @@ all_words= []
 sents_train = []
 sents_test = []
 for ind,line in train.iterrows():
-    vedtak_text = line['sammendrag']
+    vedtak_text = line['text']
     vedtak_text=vedtak_text.translate(str.maketrans('','',string.punctuation))
     words=vedtak_text.split(' ')
     bl=list(set(words))
@@ -78,7 +78,7 @@ for ind,line in train.iterrows():
     labels.append(templabellist)
 
 for ind,line in test.iterrows():
-    vedtak_text = line['sammendrag']
+    vedtak_text = line['text']
     vedtak_text=vedtak_text.translate(str.maketrans('','',string.punctuation))
     words=vedtak_text.split(' ')
     bl=list(set(words))
@@ -120,11 +120,11 @@ X_test = vectorizer_X.transform(sents_test)
 data = np.append(X_train,X_test)
 
 
-features_dict = {'featurized':data, 'labels':labels, 'idx_:_word':word_idx, 'word_:_idx':reverse_word_map, 'featurenames_vectorizer': feature_names, 'labels_:_labelnum':emnedict, 'train_test_split':len(train), 'max_n_grams':max_ngram, 'max_features':num_features, 'source':'sammendrag'}
+features_dict = {'featurized':data, 'labels':labels, 'idx_:_word':word_idx, 'word_:_idx':reverse_word_map, 'featurenames_vectorizer': feature_names, 'labels_:_labelnum':emnedict, 'train_test_split':len(train), 'max_n_grams':max_ngram, 'max_features':num_features, 'source':'text'}
 
 
 
-with gzip.open('../../processed_data/countvectorizer_3grams_10000_sammendrag_features.pkl.gz', 'wb') as file:
+with gzip.open('../processed_data/countvectorizer_3grams_10000_all_features_new.pkl.gz', 'wb') as file:
     pickle.dump(features_dict, file, protocol=pickle.HIGHEST_PROTOCOL)
 
 

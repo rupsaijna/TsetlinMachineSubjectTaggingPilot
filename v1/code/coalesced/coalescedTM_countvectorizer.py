@@ -3,7 +3,7 @@
 import pickle
 import gzip
 import sys
-sys.path.append('../../../PyCoalescedTsetlinMachineCUDA/')
+#sys.path.append('../../../PyCoalescedTsetlinMachineCUDA/')
 from PyCoalescedTsetlinMachineCUDA.tm import MultiOutputTsetlinMachine
 from sklearn.metrics import classification_report
 from sklearn.model_selection  import train_test_split
@@ -15,9 +15,9 @@ import logging
 import numpy as np
 import os
 
-filename = '../../processed_data/countvectorizer_2grams_10000_features.pkl.gz'
-outputfile = '../../results/coalesced_countvecbow_2grams_10000.txt'
-masteroutputfile = '../../results/master_results.csv'
+filename = '../../processed_data/countvectorizer_3grams_10000_all_features_new.pkl.gz'
+outputfile = '../../results/coalesced_countvecbow_3grams_10000_all.txt'
+masteroutputfile = '../../results/master_results_all.csv'
 
 num_clauses = 7000
 T = 10000
