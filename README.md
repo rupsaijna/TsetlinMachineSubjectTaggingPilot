@@ -12,6 +12,17 @@
     - ALL the Data
     - scikit-learn count vectorizer, Max n_grams = 2, binarized
     - s = 1
+ 
+### Quick Start
+
+- Download all the data
+  ```python  v1/code/get_data/get_data3.py```
+
+- Preprocess
+  ```python  v1/code/preprocessing/***.py```
+
+- Train/Test
+  ```python  v1/code/coalesced/coalescedTM_***.py```
 
 ### Files:
 
