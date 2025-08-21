@@ -10,6 +10,9 @@ print('No Sammendrag, Vedtak, Text :',df[df[['sammendrag', 'vedtak', 'text']].is
 print('No Sammendrag, Only Text & Vedtak :',df[df[['text', 'vedtak']].notna().all(axis=1) & df['text'].isna()].shape[0])
 print('No Vedtak, Only Text & Sammendrag :',df[df[['text', 'sammendrag']].notna().all(axis=1) & df['vedtak'].isna()].shape[0])
 print('No Text, Only Vedtak & Sammendrag :',df[df[['vedtak', 'sammendrag']].notna().all(axis=1) & df['text'].isna()].shape[0])
+print('Text, Vedtak & Sammendrag :',df[df[['text', 'vedtak', 'sammendrag']].notna().all(axis=1)].shape[0])
+print('Only text :',df[df[['text']].notna().all(axis=1)].shape[0])
+
 
 print('Total:', df.shape[0])
 
