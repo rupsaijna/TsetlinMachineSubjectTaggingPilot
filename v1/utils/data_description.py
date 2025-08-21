@@ -25,6 +25,7 @@ No Sammendrag, Vedtak, Text : 3951
 No Sammendrag, Only Text & Vedtak : 0
 No Vedtak, Only Text & Sammendrag : 6157
 No Text, Only Vedtak & Sammendrag : 0
+Only text : 13270
 Total: 17221
 
 '''
