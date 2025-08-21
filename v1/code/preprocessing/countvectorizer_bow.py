@@ -45,7 +45,7 @@ def encode_sentences(txt, word_set):
 
 
 
-df = pd.read_csv('../data/data3.csv')
+df = pd.read_csv('../data/stortinget_dataset.csv.gz')
 
 print(df.shape)
 

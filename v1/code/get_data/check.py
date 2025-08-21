@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('data3.csv')
+df = pd.read_csv('../data/stortinget_dataset.csv.gz')
 
 print(f"Loaded CSV with {len(df)} rows and {len(df.columns)} columns.\n")
 print("Available columns:", list(df.columns), "\n")
