@@ -16,7 +16,7 @@
 ### Quick Start
 
 - Download all the data
-  ```python  v1/code/get_data/get_data3.py```
+  ```python  v1/code/get_data/scrape_stortinget.py```
 
 - Preprocess
   ```python  v1/code/preprocessing/***.py```
