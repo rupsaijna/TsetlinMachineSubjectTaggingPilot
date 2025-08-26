@@ -24,6 +24,13 @@
 - Train/Test
   ```python  v1/code/coalesced/coalescedTM_***.py```
 
+### Cloning this repo
+
+- install git-lfs
+- git lfs clone https://github.com/cair/TsetlinMachineSubjectTaggingPilot.git
+
+-- this downloads a large saved dataset in v1/data, such that preprocess and train/test can be used without waiting for scraping
+
 ### Files:
 
 - v1/code/preprocessing/simple_bag_of_words.py
