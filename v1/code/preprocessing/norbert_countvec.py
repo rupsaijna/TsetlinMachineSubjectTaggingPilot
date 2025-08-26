@@ -69,7 +69,7 @@ labels=[]
 sents_train = []
 sents_test = []
 for ind,line in train.iterrows():
-    vedtak_text = line['text']
+    vedtak_text = line[column_to_use]
     #vedtak_text=vedtak_text.translate(str.maketrans('','',string.punctuation))
     sents_train.append(vedtak_text)
     #eval(line['emneord'])
@@ -80,7 +80,7 @@ for ind,line in train.iterrows():
     labels.append(templabellist)
 
 for ind,line in test.iterrows():
-    vedtak_text = line['text']
+    vedtak_text = line[column_to_use]
     #vedtak_text=vedtak_text.translate(str.maketrans('','',string.punctuation))
     sents_test.append(vedtak_text)
     #eval(line['emneord'])
@@ -106,7 +106,7 @@ X_test = vectorizer.transform(sents_test)
 data = np.append(X_train,X_test)
 
 print('Saving....')
-features_dict = {'featurized':data, 'labels':labels, 'labels_:_labelnum':emnedict, 'train_test_split':len(train), 'source':'text'}
+features_dict = {'featurized':data, 'labels':labels, 'labels_:_labelnum':emnedict, 'train_test_split':len(train), 'source':column_to_use}
 
 
 

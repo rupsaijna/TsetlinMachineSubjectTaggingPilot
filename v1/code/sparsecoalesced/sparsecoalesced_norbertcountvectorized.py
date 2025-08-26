@@ -25,16 +25,16 @@ T=10000
 s=1.0
 device="GPU"
 weighted_clauses=True
-epochs=1
-clause_drop_p=0.0
+epochs=100
+clause_drop_p=0.2
 q=60
 max_included_literals=32
 train_epochs = 1
 
-'''fo = open(outputfile, 'a+')
+fo = open(outputfile, 'a+')
 fo.write('\nUsing : PySparseCoalescedTsetlinMachineCUDA \nEncoding: Norbert-Tokenized CountVectorized BOW')
 fo.write('\nTM parameters : Clauses:'+str(num_clauses)+' T:'+str(T)+' s:'+str(s)+' q:'+str(q)+' max_literals:'+str(max_included_literals)+' \n')
-'''
+
 
 with gzip.open(filename, 'rb') as file:
     loaded_features = pickle.load(file)
@@ -56,7 +56,7 @@ labeldict = loaded_features['labels_:_labelnum']
 sorted_label_names = []
 sorted_label_names = sorted(labeldict, key=labeldict.get)
 y_all = make_label_vectors(lb, labeldict)
-#fo.write('\nNgrams:'+str(loaded_features['max_n_grams'])+' Features:'+str(loaded_features['max_features'])+' Source:'+loaded_features['source']+' \n')
+fo.write('\nNgrams:'+str(1)+' Features:'+str(51200)+' Source:'+loaded_features['source']+' \n')
 
 
 print(data.shape)
@@ -106,7 +106,7 @@ for i in range(epochs):
 	if i%10 == 0:
 		#fo.write('\nEpoch '+str(i)+': Acc:'+str(100*(prediction == y_test).mean()) +' ' )
 		print('\n Classification Report:\n',cr)
-'''print('\n Classification Report:\n',cr)
+print('\n Classification Report:\n',cr)
 fo.write('\nEpoch '+str(epochs)+': Average Acc:'+str(average_accuracy/(epochs)) +' ' )
 fo.write('\nClassification Report:\n{}'.format(cr))
 fo.close()   
@@ -117,13 +117,12 @@ fo = open(masteroutputfile, 'a+')
 #running_file_name, input_file_name, result_filename, Number_samples_total, Number_labels, preprocess, TMType, Clauses, T, s, train_epochs, run_epochs,Avg_accuracy,Notes
 fo.write(os.path.basename(__file__)+','+filename+','+outputfile+',')
 fo.write(str(x_train.shape[0])+','+str(len(labeldict)))
-fo.write(',CountVectorized BOW,Coalesced,')
+fo.write(',NORBERT CountVectorized BOW,SparseCoalesced,')
 fo.write(str(num_clauses)+','+str(T)+','+str(s)+','+str(train_epochs)+','+str(epochs)+',')
 fo.write(str(average_accuracy/epochs)+',')
 fo.write(str(accuracy_score(y_test, prediction)*100)+',')
 fo.write(str(precision_recall_fscore_support(y_test, prediction, average='weighted', zero_division=np.nan)[0]) +',')
 fo.write(str(precision_recall_fscore_support(y_test, prediction, average='weighted', zero_division=np.nan)[1]) +',')
 fo.write(str(precision_recall_fscore_support(y_test, prediction, average='weighted', zero_division=np.nan)[2]))
-fo.write(',NA\n')
+fo.write(',q='+str(q)+' max_inc_lit='+str(max_included_literals)+'\n')
 fo.close()
-'''
