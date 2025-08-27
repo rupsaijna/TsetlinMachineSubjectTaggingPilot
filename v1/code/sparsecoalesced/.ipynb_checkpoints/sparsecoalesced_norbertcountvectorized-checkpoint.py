@@ -20,13 +20,13 @@ outputfile = '../../results/sparsecoalesced_norbertcountvec_1gram_all.txt'
 masteroutputfile = '../../results/master_results_all.csv'
 
 
-num_clauses=1000*2
-T=10000
+num_clauses=1000
+T=2000
 s=1.0
 device="GPU"
 weighted_clauses=True
-epochs=1
-clause_drop_p=0.0
+epochs=50
+clause_drop_p=0.2
 q=60
 max_included_literals=32
 train_epochs = 1
@@ -104,8 +104,10 @@ for i in range(epochs):
 	cr= classification_report(y_test, prediction, target_names = sorted_label_names, zero_division=np.nan )
 
 	if i%10 == 0:
-		#fo.write('\nEpoch '+str(i)+': Acc:'+str(100*(prediction == y_test).mean()) +' ' )
+		fo.write('\nEpoch '+str(i)+': Acc:'+str(100*(prediction == y_test).mean()) +' ' )
+		fo.write('\nClassification Report:\n{}'.format(cr))
 		print('\n Classification Report:\n',cr)
+		fo.flush()
 print('\n Classification Report:\n',cr)
 fo.write('\nEpoch '+str(epochs)+': Average Acc:'+str(average_accuracy/(epochs)) +' ' )
 fo.write('\nClassification Report:\n{}'.format(cr))
