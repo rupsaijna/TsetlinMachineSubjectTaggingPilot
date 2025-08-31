@@ -1,0 +1,186 @@
+
+Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: CountVectorized BOW
+TM parameters : Clauses:7000 T:5000 s:1.0 
+
+Ngrams:3 Features:5000 Source:text 
+
+Using : PyCoalescedTsetlinMachineCUDA 
+Encoding: CountVectorized BOW
+TM parameters : Clauses:7000 T:5000 s:1.0 
+
+Ngrams:3 Features:5000 Source:text 
+
+Epoch 0: Acc:80.4038018607929 
+Epoch 10: Average Acc:78.7245144413304 
+Classification Report:
+                              precision    recall  f1-score   support
+
+                      Aksjer       0.00      0.00      0.00        27
+                  Arbeidsliv       0.03      0.61      0.06        76
+                Arbeidsmiljø       0.02      0.07      0.03        41
+               Arbeidsvilkår       0.04      0.63      0.08        87
+                   Atomvåpen       0.17      0.14      0.15        14
+                    Avgifter       0.06      0.30      0.10        76
+                      Banker       0.06      0.36      0.11        44
+                        Barn       0.04      0.94      0.08        96
+                  Barnehager       0.00      0.07      0.01        27
+                   Barnevern       0.07      0.22      0.10        72
+                    Bergverk       0.00      0.00      0.00        22
+     Bibliotek og litteratur       0.02      0.31      0.04        13
+                  Boligsaker       0.02      0.76      0.04        62
+            Den norske kirke       0.03      0.42      0.06        36
+               Departementer       0.31      0.69      0.42       134
+           Distriktspolitikk       0.11      0.37      0.17        63
+                   Domstoler       0.00      0.00      0.00        58
+                Elektrisitet       0.30      0.53      0.38       116
+                      Energi       0.18      0.11      0.13        85
+                      Eu/eøs       0.81      0.84      0.82       279
+                 Europarådet       0.00      0.56      0.01         9
+                   Fagskoler       0.02      0.29      0.04        14
+                     Familie       0.08      0.37      0.13        93
+                      Fangst       0.00      0.00      0.00        11
+                    Fengsler       0.07      0.07      0.07        28
+                      Ferger       0.02      0.31      0.04        26
+                    Finanser       0.00      0.00      0.00        60
+              Fiskeomsetning       0.01      0.95      0.02        21
+                   Fiskerier       0.02      0.85      0.05        65
+                          Fn       0.07      0.39      0.12        46
+                  Fn-styrker       0.03      0.20      0.05        10
+                  Folkehelse       0.19      0.38      0.25       104
+              Forbrukersaker       0.05      0.42      0.09        64
+                  Forsikring       0.05      0.21      0.08        29
+                   Forskning       0.41      0.52      0.45       149
+                     Forsvar       0.07      0.09      0.08        93
+           Forsvarsmateriell       0.03      0.69      0.06        45
+                Forurensning       0.28      0.53      0.37       163
+                 Fredsarbeid       0.06      0.38      0.11        24
+                Frivillighet       0.07      0.56      0.13        36
+            Funksjonshemmede       0.10      0.69      0.17        96
+                      Fylker       0.07      0.21      0.10        43
+    Fylkeskommunenes økonomi       0.23      0.55      0.32        58
+              Grensespørsmål       0.02      0.12      0.03        16
+                  Grunnloven       0.45      0.94      0.61       176
+                  Grunnskole       0.03      0.38      0.06        61
+                      Handel       0.05      0.42      0.09        33
+                     Havbruk       0.11      0.16      0.13        43
+                      Havner       0.08      0.25      0.12        12
+          Helseinstitusjoner       0.06      0.85      0.12        27
+              Helsepersonell       0.04      0.99      0.07        79
+                  Helsevesen       0.27      0.72      0.39       212
+                   Husbanken       0.12      0.51      0.20        57
+                      Husdyr       0.00      0.00      0.00        31
+                   Høgskoler       0.05      0.47      0.09        34
+            Høyere utdanning       0.03      0.28      0.05        46
+                      Idrett       0.03      0.48      0.06        27
+                    Industri       0.13      0.48      0.20        54
+                 Innvandrere       0.27      0.27      0.27       181
+          Internasjonal rett       0.02      0.26      0.04        27
+    Internasjonalt samarbeid       0.27      0.56      0.37       147
+                   Jernbaner       0.03      0.34      0.06        50
+                    Jordbruk       0.00      0.00      0.00        33
+                    Kartverk       0.05      0.46      0.09        28
+          Kommunenes økonomi       0.22      0.71      0.33       126
+                    Kommuner       0.04      0.91      0.07        79
+     Kommunikasjonsteknologi       0.19      0.37      0.25       116
+                      Kongen       0.07      0.21      0.10        29
+              Kriminalomsorg       0.02      0.85      0.03        33
+                Kringkasting       0.01      0.52      0.01        25
+                      Kultur       0.06      0.45      0.11        38
+                  Kulturvern       0.15      0.52      0.23        77
+                       Kunst       0.01      0.16      0.03        31
+                    Landbruk       0.15      0.06      0.09        63
+          Landbruksprodukter       0.03      0.45      0.06        38
+                Likestilling       0.02      0.47      0.04        38
+            Lokalforvaltning       0.11      0.04      0.05        85
+            Lotteri og spill       0.02      0.32      0.04        19
+                    Luftfart       0.03      0.50      0.05        46
+             Lønn og inntekt       0.03      1.00      0.06        61
+                 Massemedier       0.01      0.14      0.02        21
+         Menneskerettigheter       0.21      0.10      0.14       139
+              Merverdiavgift        nan      0.00      0.00        54
+          Militært personell       0.02      0.55      0.04        33
+                   Miljøvern       0.14      0.62      0.23        96
+                        Nato       0.00      0.00      0.00        29
+                 Naturskader       0.05      0.60      0.09        30
+                   Naturvern       0.04      0.93      0.08        87
+           Nordisk samarbeid       0.05      0.38      0.09        34
+                 Norges bank       0.02      0.76      0.04        41
+                  Næringsliv       0.19      0.20      0.19       112
+            Næringsutvikling       0.23      0.29      0.25        83
+                Olje og gass       0.18      0.46      0.26        94
+            Omsorgstjenester       0.05      0.90      0.09        50
+                  Personvern       0.09      0.11      0.10        89
+                Polarområder       0.18      0.54      0.27        50
+   Politi og påtalemyndighet       0.06      0.54      0.11       127
+           Politiske partier       0.04      0.39      0.06        23
+                        Post       0.02      0.53      0.05        15
+Priser og konkurranseforhold       0.08      0.15      0.11        88
+                Privatskoler       0.02      0.22      0.04        27
+               Psykisk helse       0.33      0.03      0.06        31
+            Redningstjeneste       0.05      0.50      0.10        26
+                 Regjeringen       0.17      0.05      0.07        64
+                   Reindrift       0.11      0.57      0.18        28
+             Reiselivsnæring       0.06      0.20      0.09        20
+           Rettferdsvederlag       0.01      0.06      0.01        18
+                  Rettsvesen       0.09      0.16      0.12        68
+              Riksrevisjonen       0.15      0.90      0.26       121
+                   Rusmidler       0.14      0.37      0.20        75
+                       Samer       0.24      0.12      0.16        50
+                  Samferdsel       0.12      0.42      0.19        72
+           Samfunnssikkerhet       0.08      0.42      0.14        78
+          Sikkerhet til sjøs       0.07      0.11      0.09        44
+                Sivilombudet       0.03      0.40      0.06        42
+                   Sivilrett       0.14      0.48      0.22        50
+                     Sjøfart       0.16      0.22      0.19        83
+        Skatteadministrasjon       0.01      0.21      0.02        28
+               Skatteavtaler       0.00      0.00      0.00        30
+               Skattefradrag       0.04      0.32      0.07        22
+                     Skatter       0.06      0.42      0.10        52
+                    Skogbruk       0.07      0.30      0.11        23
+                      Skoler       0.05      0.13      0.07        45
+           Sosiale tjenester       0.09      0.47      0.15        72
+         Spesialundervisning       0.05      0.05      0.05        20
+                       Språk       0.05      0.10      0.07        42
+        Statens pensjonsfond       0.01      0.94      0.02        16
+    Statens personalpolitikk       0.21      0.28      0.24        61
+            Statlig eierskap       0.14      0.33      0.20        52
+             Statsbudsjettet       0.55      0.67      0.60       168
+             Statseiendommer       0.15      0.43      0.23        44
+             Statsforfatning       0.01      1.00      0.03        23
+            Statsforvaltning       0.11      0.35      0.17        94
+                    Statslån       0.27      0.87      0.41        83
+                  Stortinget       0.06      0.58      0.11       106
+Stortingets forretningsorden       0.00      0.09      0.01        11
+     Stortingsrepresentanter       0.04      1.00      0.07        71
+                 Strafferett       0.02      1.00      0.03        43
+          Studiefinansiering       0.07      0.39      0.12        33
+                    Svalbard       0.17      0.46      0.25        46
+                 Svangerskap       0.06      0.46      0.10        39
+                   Sykdommer       0.09      0.37      0.15        52
+                     Sykehus       0.06      0.63      0.12        63
+               Sysselsetting       0.04      0.67      0.07        67
+                        Toll       0.03      0.80      0.06        25
+                   Traktater       0.04      1.00      0.07        92
+                 Trossamfunn       0.03      0.26      0.05        47
+                     Trygder       0.09      0.97      0.17       224
+               Universiteter       0.00      0.00      0.00        35
+                   Utdanning       0.02      0.18      0.03        56
+              Utenrikshandel        nan      0.00      0.00        73
+               Utenrikssaker       0.05      0.27      0.08        70
+         Utviklingssamarbeid       0.19      0.47      0.27        87
+                        Valg       0.02      0.80      0.04        45
+                  Varehandel       0.01      0.89      0.02        18
+         Vassdragsregulering       0.01      0.48      0.02        23
+                  Vegtrafikk       0.16      0.12      0.13        95
+                    Vegvesen       0.06      0.92      0.11       104
+              Verftsindustri        nan      0.00      0.00         6
+              Veterinærvesen       0.00      0.00      0.00        27
+         Videregående skoler       0.02      0.35      0.04        40
+             Voksenopplæring       0.04      0.77      0.08        35
+         Økonomisk samarbeid       0.01      0.70      0.03        30
+
+                   micro avg       0.05      0.48      0.10      9723
+                   macro avg       0.09      0.42      0.12      9723
+                weighted avg       0.15      0.48      0.19      9723
+                 samples avg       0.04      0.42      0.07      9723
