@@ -33,32 +33,20 @@
 
 ### Files:
 
-- v1/code/preprocessing/simple_bag_of_words.py
+- Preprocessing options:
 
-```Creates present/absent features w.r.t. bag of words. Saves following in processed_data/simple_bag_of_words_features.pkl.gz
+  -- Simple Bag of words
+  -- Countvectorizer
+  -- Countvectorizer with NORBERT4 Tokenizer
 
-{'featurized':converted data, 
-'labels':labels as number,
-'idx_:_word': unique words with indices,
-'word_:_idx':reverse word map, 
-'labels_:_labelnum':dict mapping of labels to numbers
-'train_test_split':not split into train-test}
-```
+See more at code/preprocessing.
 
-- v1/code/preprocessing/countvectorizer_bag_of_words.py
+- Training/Testing
 
-```Creates features w.r.t. CountVectorizer. Saves following in processed_data/countvectorizer_bag_of_words_features.pkl.gz
+  -- code/coalesced
+  -- code/sparsecoalesced
 
-{'featurized':converted data, 
-'labels':labels as number,
-'idx_:_word': unique words with indices,
-'word_:_idx':reverse word map,
-'featurenames_vectorizer': feature names after calling CountVectorizer fit_transform,
-'labels_:_labelnum':dict mapping of labels to numbers
-'train_test_split':index of split for train-test}
-```
-
-- v1/code/vanillaTM.py
+  -- v1/code/vanillaTM.py
 
 ```
 sample1 -> [label1, label2]
@@ -76,13 +64,4 @@ OverflowError: Python integer -1 out of bounds for uint32
 Possibly due to all labels not being represented in training data.
 ```
 
-- v1/code/coalescedTM.py
-
-```
-Further hyperparamter tuning required.
-
-Current Accuracy at 69.5.
-
-```
-Classification report for class-wise PRF in v1/results/classificationreport_simplebow_coalesced.txt
 

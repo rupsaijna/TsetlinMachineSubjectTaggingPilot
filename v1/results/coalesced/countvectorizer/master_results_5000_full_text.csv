@@ -1,0 +1,1 @@
+coalescedTM_countvectorizer.py,../../processed_data/countvectorizer/countvectorizer_3grams_5000_full_text.pkl.gz,../../results/coalesced/countvectorizer/coalesced_countvecbow_3grams_5000_full_text.txt,10513,163,CountVectorized BOW,Coalesced,7000,5000,1.0,1,10,78.7245144413304,0.0,0.14822881381613767,0.48153861976756146,0.18666890433960612,NA

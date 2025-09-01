@@ -1,0 +1,164 @@
+Emneord,Train_count,Test_count,Total,Train_share,Test_share
+Eu/eøs,1115,279,1394,0.8,0.2
+Helsevesen,801,212,1013,0.791,0.209
+Trygder,781,224,1005,0.777,0.223
+Grunnloven,725,176,901,0.805,0.195
+Innvandrere,651,181,832,0.782,0.218
+Forurensning,652,163,815,0.8,0.2
+Statsbudsjettet,540,168,708,0.763,0.237
+Internasjonalt samarbeid,552,147,699,0.79,0.21
+Politi og påtalemyndighet,543,127,670,0.81,0.19
+Menneskerettigheter,506,139,645,0.784,0.216
+Kommunikasjonsteknologi,524,116,640,0.819,0.181
+Forskning,484,149,633,0.765,0.235
+Departementer,481,134,615,0.782,0.218
+Riksrevisjonen,473,121,594,0.796,0.204
+Folkehelse,485,104,589,0.823,0.177
+Stortinget,459,106,565,0.812,0.188
+Elektrisitet,427,116,543,0.786,0.214
+Kommunenes økonomi,403,126,529,0.762,0.238
+Vegvesen,415,104,519,0.8,0.2
+Næringsliv,403,112,515,0.783,0.217
+Kommuner,432,79,511,0.845,0.155
+Naturvern,388,87,475,0.817,0.183
+Miljøvern,369,96,465,0.794,0.206
+Forsvar,368,93,461,0.798,0.202
+Priser og konkurranseforhold,372,88,460,0.809,0.191
+Olje og gass,354,94,448,0.79,0.21
+Familie,353,93,446,0.791,0.209
+Statsforvaltning,348,94,442,0.787,0.213
+Funksjonshemmede,345,96,441,0.782,0.218
+Vegtrafikk,340,95,435,0.782,0.218
+Personvern,341,89,430,0.793,0.207
+Barn,325,96,421,0.772,0.228
+Avgifter,345,76,421,0.819,0.181
+Traktater,323,92,415,0.778,0.222
+Samfunnssikkerhet,322,78,400,0.805,0.195
+Lokalforvaltning,302,85,387,0.78,0.22
+Regjeringen,307,64,371,0.827,0.173
+Kulturvern,293,77,370,0.792,0.208
+Arbeidsvilkår,280,87,367,0.763,0.237
+Samferdsel,295,72,367,0.804,0.196
+Energi,282,85,367,0.768,0.232
+Sysselsetting,299,67,366,0.817,0.183
+Næringsutvikling,281,83,364,0.772,0.228
+Utviklingssamarbeid,275,87,362,0.76,0.24
+Forbrukersaker,288,64,352,0.818,0.182
+Stortingsrepresentanter,280,71,351,0.798,0.202
+Sjøfart,268,83,351,0.764,0.236
+Helsepersonell,271,79,350,0.774,0.226
+Statslån,267,83,350,0.763,0.237
+Utenrikssaker,255,70,325,0.785,0.215
+Lønn og inntekt,264,61,325,0.812,0.188
+Utenrikshandel,248,73,321,0.773,0.227
+Barnevern,247,72,319,0.774,0.226
+Fiskerier,251,65,316,0.794,0.206
+Distriktspolitikk,252,63,315,0.8,0.2
+Arbeidsliv,238,76,314,0.758,0.242
+Rusmidler,229,75,304,0.753,0.247
+Landbruk,232,63,295,0.786,0.214
+Skatter,243,52,295,0.824,0.176
+Sosiale tjenester,220,72,292,0.753,0.247
+Domstoler,232,58,290,0.8,0.2
+Finanser,222,60,282,0.787,0.213
+Rettsvesen,212,68,280,0.757,0.243
+Skoler,230,45,275,0.836,0.164
+Statlig eierskap,221,52,273,0.81,0.19
+Statens personalpolitikk,209,61,270,0.774,0.226
+Luftfart,221,46,267,0.828,0.172
+Jernbaner,215,50,265,0.811,0.189
+Sykehus,200,63,263,0.76,0.24
+Boligsaker,194,62,256,0.758,0.242
+Fylkeskommunenes økonomi,196,58,254,0.772,0.228
+Merverdiavgift,191,54,245,0.78,0.22
+Strafferett,200,43,243,0.823,0.177
+Grunnskole,181,61,242,0.748,0.252
+Kultur,204,38,242,0.843,0.157
+Utdanning,183,56,239,0.766,0.234
+Omsorgstjenester,185,50,235,0.787,0.213
+Sykdommer,180,52,232,0.776,0.224
+Valg,186,45,231,0.805,0.195
+Statseiendommer,184,44,228,0.807,0.193
+Sivilombudet,183,42,225,0.813,0.187
+Samer,174,50,224,0.777,0.223
+Forsvarsmateriell,179,45,224,0.799,0.201
+Fylker,179,43,222,0.806,0.194
+Høyere utdanning,175,46,221,0.792,0.208
+Husbanken,161,57,218,0.739,0.261
+Polarområder,168,50,218,0.771,0.229
+Banker,172,44,216,0.796,0.204
+Likestilling,175,38,213,0.822,0.178
+Sikkerhet til sjøs,162,44,206,0.786,0.214
+Industri,151,54,205,0.737,0.263
+Svalbard,157,46,203,0.773,0.227
+Nordisk samarbeid,168,34,202,0.832,0.168
+Arbeidsmiljø,160,41,201,0.796,0.204
+Landbruksprodukter,159,38,197,0.807,0.193
+Trossamfunn,149,47,196,0.76,0.24
+Språk,150,42,192,0.781,0.219
+Den norske kirke,151,36,187,0.807,0.193
+Fn,139,46,185,0.751,0.249
+Frivillighet,148,36,184,0.804,0.196
+Svangerskap,142,39,181,0.785,0.215
+Kriminalomsorg,146,33,179,0.816,0.184
+Kunst,147,31,178,0.826,0.174
+Militært personell,142,33,175,0.811,0.189
+Norges bank,130,41,171,0.76,0.24
+Jordbruk,136,33,169,0.805,0.195
+Havbruk,126,43,169,0.746,0.254
+Videregående skoler,129,40,169,0.763,0.237
+Redningstjeneste,142,26,168,0.845,0.155
+Sivilrett,117,50,167,0.701,0.299
+Husdyr,135,31,166,0.813,0.187
+Nato,134,29,163,0.822,0.178
+Økonomisk samarbeid,132,30,162,0.815,0.185
+Barnehager,134,27,161,0.832,0.168
+Veterinærvesen,128,27,155,0.826,0.174
+Toll,122,25,147,0.83,0.17
+Handel,112,33,145,0.772,0.228
+Naturskader,115,30,145,0.793,0.207
+Forsikring,114,29,143,0.797,0.203
+Statsforfatning,120,23,143,0.839,0.161
+Voksenopplæring,103,35,138,0.746,0.254
+Skatteadministrasjon,109,28,137,0.796,0.204
+Kongen,107,29,136,0.787,0.213
+Idrett,107,27,134,0.799,0.201
+Reindrift,106,28,134,0.791,0.209
+Skatteavtaler,104,30,134,0.776,0.224
+Aksjer,102,27,129,0.791,0.209
+Vassdragsregulering,105,23,128,0.82,0.18
+Psykisk helse,97,31,128,0.758,0.242
+Universiteter,91,35,126,0.722,0.278
+Fengsler,96,28,124,0.774,0.226
+Varehandel,106,18,124,0.855,0.145
+Reiselivsnæring,103,20,123,0.837,0.163
+Massemedier,101,21,122,0.828,0.172
+Skogbruk,98,23,121,0.81,0.19
+Ferger,93,26,119,0.782,0.218
+Høgskoler,81,34,115,0.704,0.296
+Helseinstitusjoner,86,27,113,0.761,0.239
+Kringkasting,88,25,113,0.779,0.221
+Skattefradrag,88,22,110,0.8,0.2
+Fredsarbeid,86,24,110,0.782,0.218
+Internasjonal rett,82,27,109,0.752,0.248
+Privatskoler,82,27,109,0.752,0.248
+Studiefinansiering,75,33,108,0.694,0.306
+Europarådet,99,9,108,0.917,0.083
+Bergverk,83,22,105,0.79,0.21
+Lotteri og spill,84,19,103,0.816,0.184
+Politiske partier,77,23,100,0.77,0.23
+Fiskeomsetning,78,21,99,0.788,0.212
+Post,83,15,98,0.847,0.153
+Kartverk,52,28,80,0.65,0.35
+Atomvåpen,65,14,79,0.823,0.177
+Rettferdsvederlag,57,18,75,0.76,0.24
+Havner,62,12,74,0.838,0.162
+Bibliotek og litteratur,57,13,70,0.814,0.186
+Spesialundervisning,43,20,63,0.683,0.317
+Grensespørsmål,46,16,62,0.742,0.258
+Stortingets forretningsorden,51,11,62,0.823,0.177
+Fangst,50,11,61,0.82,0.18
+Statens pensjonsfond,44,16,60,0.733,0.267
+Fn-styrker,45,10,55,0.818,0.182
+Fagskoler,37,14,51,0.725,0.275
+Verftsindustri,23,6,29,0.793,0.207
