@@ -46,7 +46,7 @@ print(df.shape)
 
 print(df.columns)
 
-column_to_use = 'sammendrag'
+column_to_use = 'text'
 
 drop_set_for_na = ['emneord']+[column_to_use]
 
@@ -93,7 +93,9 @@ for ind,line in test.iterrows():
 print('Train:', len(sents_train), ' Test:', len(sents_test))
 
 
-vectorizer = CountVectorizer(tokenizer=tokenizer_wrapper, lowercase=False, vocabulary = nortokenizer.get_vocab(), binary=True)
+vectorizer = CountVectorizer(tokenizer=tokenizer_wrapper, lowercase=False, vocabulary = nortokenizer.get_vocab(), binary=True) ## for only included vocab -- output filename '1gram_limited_features'
+
+##vectorizer = CountVectorizer(tokenizer=tokenizer_wrapper, lowercase=False, vocabulary = nortokenizer.get_vocab(), binary=True) ## for entire NORBERT vocab -- output filename '1gram_all_features_new'
 
 print('Vectorizing....')
 #print(sents_train)
@@ -106,12 +108,18 @@ X_test = vectorizer.transform(sents_test)
 data = np.append(X_train,X_test)
 
 print('Saving....')
-features_dict = {'featurized':data, 'labels':labels, 'labels_:_labelnum':emnedict, 'train_test_split':len(train), 'source':column_to_use}
 
+if len(feature_names) < nortokenizer.vocab_size :
+    features_dict = {'featurized':data, 'labels':labels, 'featurenames_vectorizer': feature_names, 'labels_:_labelnum':emnedict, 'train_test_split':len(train), 'source':column_to_use}
+    with gzip.open('../../processed_data/norbertcountvec_1gram_limited_features_'+column_to_use+'pkl.gz', 'wb') as file:
+        pickle.dump(features_dict, file, protocol=pickle.HIGHEST_PROTOCOL)
+    print("Saved limited "+str(len(feature_names))+" features for "+column_to_use)
 
-
-with gzip.open('../../processed_data/norbertcountvec_1gram_all_features_new.pkl.gz', 'wb') as file:
-    pickle.dump(features_dict, file, protocol=pickle.HIGHEST_PROTOCOL)
+else:
+    features_dict = {'featurized':data, 'labels':labels, 'labels_:_labelnum':emnedict, 'train_test_split':len(train), 'source':column_to_use}
+    with gzip.open('../../processed_data/norbertcountvec_1gram_all_features_'+column_to_use+'.pkl.gz', 'wb') as file:
+        pickle.dump(features_dict, file, protocol=pickle.HIGHEST_PROTOCOL)
+    print("Saved all features for "+column_to_use)
 
 
 

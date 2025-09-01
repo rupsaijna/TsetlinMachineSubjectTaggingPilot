@@ -15,20 +15,20 @@ import logging
 import numpy as np
 import os
 
-filename = '../../processed_data/norbertcountvec_1gram_all_features_new.pkl.gz'
+filename = '../../processed_data/norbertcountvec_1gram_all_features_text.pkl.gz'
 outputfile = '../../results/sparsecoalesced_norbertcountvec_1gram_all.txt'
 masteroutputfile = '../../results/master_results_all.csv'
 
 
-num_clauses=1000
-T=2000
+num_clauses=10000
+T=3* num_clauses
 s=1.0
 device="GPU"
 weighted_clauses=True
-epochs=50
-clause_drop_p=0.2
-q=60
-max_included_literals=32
+epochs=30
+clause_drop_p=0.4
+q=80
+max_included_literals=64
 train_epochs = 1
 
 fo = open(outputfile, 'a+')
